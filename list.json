@@ -1,0 +1,51 @@
+{
+	"media": [
+		{
+			"url": "00_cscc_logo_for_isu_code_folios.jpg",
+			"url_thumb": "thumb/00_cscc_logo_for_isu_code_folios.jpg"
+		},
+		{
+			"url": "01_cscc_christopher_schneberger_sunset_rock_5.jpg",
+			"url_thumb": "thumb/01_cscc_christopher_schneberger_sunset_rock_5.jpg"
+		},
+		{
+			"url": "02_cscc_tom_stremlau_plasticus_porticus.jpg",
+			"url_thumb": "thumb/02_cscc_tom_stremlau_plasticus_porticus.jpg"
+		},
+		{
+			"url": "03_cscc_russgager_skyline_scene.jpg",
+			"url_thumb": "thumb/03_cscc_russgager_skyline_scene.jpg"
+		},
+		{
+			"url": "04_cscc_emily_deam_mother_nature.jpg",
+			"url_thumb": "thumb/04_cscc_emily_deam_mother_nature.jpg"
+		},
+		{
+			"url": "05_cscc_bob_curtis_brooklyn_bridge.jpg",
+			"url_thumb": "thumb/05_cscc_bob_curtis_brooklyn_bridge.jpg"
+		},
+		{
+			"url": "06_cscc_russ_gager_yellow_1.jpg",
+			"url_thumb": "thumb/06_cscc_russ_gager_yellow_1.jpg"
+		},
+		{
+			"url": "07_cscc_bob_curtis_njrr_terminal.jpg",
+			"url_thumb": "thumb/07_cscc_bob_curtis_njrr_terminal.jpg"
+		},
+		{
+			"url": "08_cscc_ken_kovar_rock_guardians.jpg",
+			"url_thumb": "thumb/08_cscc_ken_kovar_rock_guardians.jpg"
+		},
+		{
+			"url": "09_cscc_christopher_schneberger_forevertron_stereo.jpg",
+			"url_thumb": "thumb/09_cscc_christopher_schneberger_forevertron_stereo.jpg"
+		},
+		{
+			"url": "10_cscc_tom_stremlau_place_de_la_musique.jpg",
+			"url_thumb": "thumb/10_cscc_tom_stremlau_place_de_la_musique.jpg"
+		}
+	],
+	"meta": {
+		"url_base": ""
+	}
+}

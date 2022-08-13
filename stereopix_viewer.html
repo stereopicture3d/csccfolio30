@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Stereoscopic (3D) photo viewer</title>
+		<style>
+			body {
+				background: #eee;
+				font-family: 'Open Sans', arial, sans-serif;
+				text-align: center;
+				margin: 20px 0;
+				padding: 0;
+			}
+			h1, a {
+				color: #909;
+			}
+			iframe {
+				box-sizing: border-box;
+			}
+			.thumbs {
+				margin: 12px;
+				display: grid;
+				grid-template-columns: repeat(auto-fill, 198px);
+				grid-gap: 12px;
+				justify-content: center;
+			}
+			.thumbs a {
+				width: 190px;
+				height: 190px;
+				border: 5px solid #fff;
+				background: #fff;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.thumbs a.active {
+				border-color: #c00000;
+			}
+			.thumbs a img {
+				margin: 20px;
+				max-width: 150px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>HTML5 Stereo Viewer</h1>
+		<p>Using the viewer of <a href="https://stereopix.net/">Stereopix</a>.</p>
+
+		<script type="text/javascript">
+			var current = 0;
+			window.addEventListener('message', function(e) {
+				if (e.origin == 'https://stereopix.net') {
+					var links = document.getElementsByClassName('gallery_link');
+					if (e.data.type == 'viewerReady') {
+						var json = { "media": [] };
+						for (var i = 0; i < links.length; i++) {
+							json.media.push({ "url": (new URL(links[i].href, document.location.href)).href });
+							links[i]['data-position'] = i;
+							links[i].addEventListener('click', function(click_event) {
+								click_event.preventDefault();
+								e.source.postMessage({ 'stereopix_action': 'goto', 'position': this['data-position'] }, 'https://stereopix.net');
+							});
+						}
+						e.source.postMessage({ 'stereopix_action': 'list_add_json', 'media': json }, 'https://stereopix.net');
+					} else if (e.data.type == 'mediumChanged') {
+						links[current].classList.remove("active");
+						current = e.data.position;
+						links[current].classList.add("active");
+					}
+				}
+			});
+		</script>
+
+		<iframe title="Stereoscopic (3D) photo viewer" id="stereopix_viewer"
+			style="width: 100%; height: 960px; max-height: 100vh; max-width: 100vw; border: 2px solid black; margin: 8px 0;" 
+			allowfullscreen="yes" allowvr="yes" allow="fullscreen;xr-spatial-tracking;accelerometer;gyroscope" 
+			src="https://stereopix.net/viewer:embed/"></iframe>
+
+		<div class="thumbs">
+			<a class="gallery_link" href="00_cscc_logo_for_isu_code_folios.jpg"><img src="thumb/00_cscc_logo_for_isu_code_folios.jpg" /></a>
+			<a class="gallery_link" href="01_cscc_christopher_schneberger_sunset_rock_5.jpg"><img src="thumb/01_cscc_christopher_schneberger_sunset_rock_5.jpg" /></a>
+			<a class="gallery_link" href="02_cscc_tom_stremlau_plasticus_porticus.jpg"><img src="thumb/02_cscc_tom_stremlau_plasticus_porticus.jpg" /></a>
+			<a class="gallery_link" href="03_cscc_russgager_skyline_scene.jpg"><img src="thumb/03_cscc_russgager_skyline_scene.jpg" /></a>
+			<a class="gallery_link" href="04_cscc_emily_deam_mother_nature.jpg"><img src="thumb/04_cscc_emily_deam_mother_nature.jpg" /></a>
+			<a class="gallery_link" href="05_cscc_bob_curtis_brooklyn_bridge.jpg"><img src="thumb/05_cscc_bob_curtis_brooklyn_bridge.jpg" /></a>
+			<a class="gallery_link" href="06_cscc_russ_gager_yellow_1.jpg"><img src="thumb/06_cscc_russ_gager_yellow_1.jpg" /></a>
+			<a class="gallery_link" href="07_cscc_bob_curtis_njrr_terminal.jpg"><img src="thumb/07_cscc_bob_curtis_njrr_terminal.jpg" /></a>
+			<a class="gallery_link" href="08_cscc_ken_kovar_rock_guardians.jpg"><img src="thumb/08_cscc_ken_kovar_rock_guardians.jpg" /></a>
+			<a class="gallery_link" href="09_cscc_christopher_schneberger_forevertron_stereo.jpg"><img src="thumb/09_cscc_christopher_schneberger_forevertron_stereo.jpg" /></a>
+			<a class="gallery_link" href="10_cscc_tom_stremlau_place_de_la_musique.jpg"><img src="thumb/10_cscc_tom_stremlau_place_de_la_musique.jpg" /></a>
+		</div>
+	</body>
+</html>
